@@ -25,7 +25,6 @@ public class Movement : MonoBehaviour
         {
             if(!animator.GetBool("isBoxing") && !animator.GetBool("isElbow") && !animator.GetBool("isJab") ){
                 int i = Random.Range(1, 4);
-                Debug.Log(i);
                 if(i == 1) {
                     animator.SetBool("isBoxing", true);
                 } else if(i == 2) {

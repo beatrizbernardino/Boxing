@@ -18,9 +18,15 @@ public class Hombre : MonoBehaviour
 
     void OnTriggerEnter (Collider collision)
  {
+    
      if (collision.gameObject.tag == "ChupacabraArm")
     {
         Debug.Log(collision.gameObject.tag);
     }
+    if (collision.gameObject.tag == "Gloves")
+    {
+        Debug.Log("Luva de pedreiro");
+    }
+    
  }
 }

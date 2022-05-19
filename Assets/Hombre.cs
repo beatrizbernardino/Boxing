@@ -8,17 +8,24 @@ public class Hombre : MonoBehaviour
     public int previousHealth;
     public bool hit = false;
     public Text Texto;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+          animator = GameObject.Find("MacarenaDance").GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       if(health <= 0) {
+          Texto.text = "Perdeu!!!"; 
+           animator.SetBool("isLost", true);
+           animator.SetBool("isBoxing", false);
+           animator.SetBool("isJab", false);
+           animator.SetBool("isElbow", false);
+       }
     }
 
     void OnTriggerEnter (Collider collision)

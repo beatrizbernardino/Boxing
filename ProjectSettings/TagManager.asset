@@ -7,6 +7,7 @@ TagManager:
   - ChupacabraArm
   - Gloves
   - BodyCollider
+  - ChupacabraCorpinho
   layers:
   - Default
   - TransparentFX

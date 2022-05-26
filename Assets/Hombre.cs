@@ -9,6 +9,7 @@ public class Hombre : MonoBehaviour
     public bool hit = false;
     public Text Texto;
     private Animator animator;
+    public AudioSource punchSound;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class Hombre : MonoBehaviour
     if (collision.gameObject.tag == "BodyCollider" && hit)
     {   
         StartCoroutine(WaitPunch());
+        punchSound.Play();
         health -= 20;
         Debug.Log($"vida: {health}");
         Texto.text=$"vida: {health}";

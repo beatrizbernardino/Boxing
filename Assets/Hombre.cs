@@ -10,12 +10,17 @@ public class Hombre : MonoBehaviour
     public Text Texto;
     private Animator animator;
     public AudioSource punchSound;
+    public Image healthbarEnemy;
+    public Image healthbarPlayer;
+    float width;
+
 
     // Start is called before the first frame update
     void Start()
     {
-          animator = GameObject.Find("MacarenaDance").GetComponent<Animator>();
-    }
+       width = 211;
+         animator = GameObject.Find("Macarena Dance").GetComponent<Animator>();
+   }
 
     // Update is called once per frame
     void Update()
@@ -41,6 +46,14 @@ public class Hombre : MonoBehaviour
         health -= 20;
         Debug.Log($"vida: {health}");
         Texto.text=$"vida: {health}";
+    
+
+          var theBarRectTransform =  healthbarPlayer.transform as RectTransform;
+          width -= 21.5f;
+          theBarRectTransform.sizeDelta = new Vector2 (width, theBarRectTransform.sizeDelta.y);
+          // DEAR BIAMAT OF FUTURE: Isso funciona mas voces precisam colocar na imagem do chupacabra
+          // e nao a do retangulo! kisses x0x0 godibaie :) 
+          theBarRectTransform.localPosition  += new Vector3(200.0f, 0.0f, 0.0f);
     }
     if (collision.gameObject.tag == "Gloves")
     {

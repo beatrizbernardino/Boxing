@@ -11,12 +11,21 @@ public class PlayMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        int i = Random.Range(1, 4);
+         if(i == 1) {
+           
+        } else if(i == 2) {
+           
+        } else if(i == 3) {
+           
+        }
+
         
     }
 }

@@ -2,16 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class Hombre : MonoBehaviour
 {
     public int health = 200;
     public int previousHealth;
     public bool hit = false;
-    public Text Texto;
     private Animator animator;
     public AudioSource punchSound;
-    public Image healthbarEnemy;
+    public Text finalText;
+    
     public Image healthbarPlayer;
+    public Image headPlayer;
+
+
+
+    public GameObject chupacabra;
+    public Image chupacabraImage;
+    
+   public Image healthbarChupacabra;
+    public Image headChupacabra;
+
+   
     float width;
 
 
@@ -26,11 +39,25 @@ public class Hombre : MonoBehaviour
     void Update()
     {
        if(health <= 0) {
-          Texto.text = "Perdeu!!!"; 
            animator.SetBool("isLost", true);
            animator.SetBool("isBoxing", false);
            animator.SetBool("isJab", false);
            animator.SetBool("isElbow", false);
+           finalText.text= "Você Perdeu";
+           finalText.gameObject.SetActive(true);
+
+            healthbarPlayer.gameObject.SetActive(false);
+            headPlayer.gameObject.SetActive(false);
+            healthbarChupacabra.gameObject.SetActive(false);
+            headChupacabra.gameObject.SetActive(false);
+
+
+
+            chupacabra.gameObject.SetActive(false);
+            chupacabraImage.gameObject.SetActive(true);
+    
+   
+   
        }
     }
 
@@ -45,7 +72,6 @@ public class Hombre : MonoBehaviour
         punchSound.Play();
         health -= 20;
         Debug.Log($"vida: {health}");
-        Texto.text=$"vida: {health}";
     
 
           var theBarRectTransform =  healthbarPlayer.transform as RectTransform;
@@ -53,7 +79,7 @@ public class Hombre : MonoBehaviour
           theBarRectTransform.sizeDelta = new Vector2 (width, theBarRectTransform.sizeDelta.y);
           // DEAR BIAMAT OF FUTURE: Isso funciona mas voces precisam colocar na imagem do chupacabra
           // e nao a do retangulo! kisses x0x0 godibaie :) 
-          theBarRectTransform.localPosition  += new Vector3(200.0f, 0.0f, 0.0f);
+          headPlayer.transform.position  -= new Vector3(0.013f, 0.0f, 0.0f);
     }
     if (collision.gameObject.tag == "Gloves")
     {
